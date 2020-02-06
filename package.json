@@ -16,12 +16,21 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migrate:make": "knex migrate:make --cwd src",
+    "migrate:latest": "knex  migrate:latest --cwd src",
+    "migrate:currentVersion": "knex migrate:currentVersion --cwd src",
+    "seed:make": "knex seed:make --cwd src",
+    "seed:run": "knex seed:run --cwd src"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
+    "knex": "^0.20.8",
+    "objection": "^2.1.2",
+    "objection-password": "^2.0.0",
+    "pg": "^7.18.1",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3"
@@ -34,6 +43,8 @@
     "@types/supertest": "2.0.7",
     "jest": "24.7.1",
     "prettier": "1.17.0",
+    "husky": "^3.0.9",
+    "lint-staged": "9.2.0",
     "supertest": "4.0.2",
     "ts-jest": "24.0.2",
     "ts-node": "8.1.0",
@@ -41,6 +52,21 @@
     "tsconfig-paths": "3.8.0",
     "tslint": "5.16.0",
     "typescript": "3.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,js,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.ts": [
+      "tslint --fix --config tslint.json",
+      "git add"
+    ]
   },
   "jest": {
     "moduleFileExtensions": [
