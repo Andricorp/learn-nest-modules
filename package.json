@@ -17,17 +17,17 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migrate:make": "knex migrate:make --cwd src",
-    "migrate:latest": "knex  migrate:latest --cwd src",
-    "migrate:currentVersion": "knex migrate:currentVersion --cwd src",
-    "seed:make": "knex seed:make --cwd src",
-    "seed:run": "knex seed:run --cwd src"
+    "migrate:make": "knex migrate:make --knexfile ./src/knexfile.ts",
+    "migrate:latest": "knex  migrate:latest --knexfile ./src/knexfile.ts",
+    "migrate:currentVersion": "knex migrate:currentVersion --knexfile ./src/knexfile.ts",
+    "seed:make": "knex seed:make --knexfile ./src/knexfile.ts",
+    "seed:run": "knex seed:run --knexfile ./src/knexfile.ts"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
-    "knex": "^0.20.8",
+    "knex": "^0.20.9",
     "objection": "^2.1.2",
     "objection-password": "^2.0.0",
     "pg": "^7.18.1",
