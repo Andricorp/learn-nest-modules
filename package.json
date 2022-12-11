@@ -26,7 +26,7 @@
   "dependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
-    "@nestjs/platform-express": "^6.0.0",
+    "@nestjs/platform-express": "^9.2.1",
     "knex": "^0.20.9",
     "objection": "^2.1.2",
     "objection-password": "^2.0.0",
